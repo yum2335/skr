@@ -1,0 +1,9 @@
+C:\Users\robot\work\tools\SEEDCmdChecker\SEEDCmdChecker\bin\Release\SeedCmdChecker.exe.config
+C:\Users\robot\work\tools\SEEDCmdChecker\SEEDCmdChecker\bin\Release\SeedCmdChecker.exe
+C:\Users\robot\work\tools\SEEDCmdChecker\SEEDCmdChecker\bin\Release\SeedCmdChecker.pdb
+C:\Users\robot\work\tools\SEEDCmdChecker\SEEDCmdChecker\obj\Release\SeedCmdChecker.Form1.resources
+C:\Users\robot\work\tools\SEEDCmdChecker\SEEDCmdChecker\obj\Release\SeedCmdChecker.Properties.Resources.resources
+C:\Users\robot\work\tools\SEEDCmdChecker\SEEDCmdChecker\obj\Release\SEEDCmdChecker.csproj.GenerateResource.Cache
+C:\Users\robot\work\tools\SEEDCmdChecker\SEEDCmdChecker\obj\Release\SeedCmdChecker.exe
+C:\Users\robot\work\tools\SEEDCmdChecker\SEEDCmdChecker\obj\Release\SeedCmdChecker.pdb
+C:\Users\robot\work\tools\SEEDCmdChecker\SEEDCmdChecker\obj\Release\SEEDCmdChecker.csprojResolveAssemblyReference.cache

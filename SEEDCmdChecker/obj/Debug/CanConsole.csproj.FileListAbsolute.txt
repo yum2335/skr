@@ -1,0 +1,21 @@
+c:\users\robot\documents\visual studio 2013\Projects\CanConsole\CanConsole\bin\Debug\CanConsole.exe.config
+c:\users\robot\documents\visual studio 2013\Projects\CanConsole\CanConsole\bin\Debug\CanConsole.exe
+c:\users\robot\documents\visual studio 2013\Projects\CanConsole\CanConsole\bin\Debug\CanConsole.pdb
+c:\users\robot\documents\visual studio 2013\Projects\CanConsole\CanConsole\obj\Debug\CanConsole.csprojResolveAssemblyReference.cache
+c:\users\robot\documents\visual studio 2013\Projects\CanConsole\CanConsole\obj\Debug\CanConsole.Form1.resources
+c:\users\robot\documents\visual studio 2013\Projects\CanConsole\CanConsole\obj\Debug\CanConsole.Properties.Resources.resources
+c:\users\robot\documents\visual studio 2013\Projects\CanConsole\CanConsole\obj\Debug\CanConsole.csproj.GenerateResource.Cache
+c:\users\robot\documents\visual studio 2013\Projects\CanConsole\CanConsole\obj\Debug\CanConsole.exe
+c:\users\robot\documents\visual studio 2013\Projects\CanConsole\CanConsole\obj\Debug\CanConsole.pdb
+C:\Users\robot\work\tools\CanConsole\CanConsole\bin\Debug\CanConsole.exe.config
+C:\Users\robot\work\tools\CanConsole\CanConsole\bin\Debug\CanConsole.exe
+C:\Users\robot\work\tools\CanConsole\CanConsole\bin\Debug\CanConsole.pdb
+C:\Users\robot\work\tools\CanConsole\CanConsole\obj\Debug\CanConsole.csprojResolveAssemblyReference.cache
+C:\Users\robot\work\tools\CanConsole\CanConsole\obj\Debug\CanConsole.Form1.resources
+C:\Users\robot\work\tools\CanConsole\CanConsole\obj\Debug\CanConsole.Properties.Resources.resources
+C:\Users\robot\work\tools\CanConsole\CanConsole\obj\Debug\CanConsole.csproj.GenerateResource.Cache
+C:\Users\robot\work\tools\CanConsole\CanConsole\obj\Debug\CanConsole.exe
+C:\Users\robot\work\tools\CanConsole\CanConsole\obj\Debug\CanConsole.pdb
+C:\Users\robot\work\tools\SEEDCmdChecker\CanConsole\bin\Debug\CanConsole.exe.config
+C:\Users\robot\work\tools\SEEDCmdChecker\CanConsole\obj\Debug\CanConsole.exe
+C:\Users\robot\work\tools\SEEDCmdChecker\CanConsole\obj\Debug\CanConsole.pdb

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Port>COM2</Port>
+  <SeedId>1</SeedId>
+  <SendCmdHistoryList>
+    <string>t3018F1005D0005000000</string>
+    <string>t3018F1005D0007000000</string>
+    <string>t3018F1005D0008000000</string>
+    <string>t3008F0005D000C000000</string>
+    <string>t3008F0005D000D000000</string>
+    <string>t3008F0005D0009000000</string>
+    <string>t3008F0005D0008000000</string>
+    <string>t3008F0005D0001000000</string>
+    <string>t3008F0005D0002000000</string>
+    <string>t3008F0005D0003000000</string>
+    <string>t3008F0005D0005000000</string>
+    <string>t3008F0005D0006000000</string>
+    <string>t3008F0005D0007000000</string>
+    <string>t3008F0005D0004000000</string>
+    <string>t3008F0005D0019000000</string>
+    <string>t3008F0006400010058C3</string>
+    <string>t3008F0006400010066B0</string>
+    <string>t3008F000640100001000</string>
+    <string>t3008F000500001000000</string>
+    <string>t3008F000500000000000</string>
+  </SendCmdHistoryList>
+</Settings>
