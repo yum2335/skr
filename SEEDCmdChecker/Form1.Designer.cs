@@ -60,6 +60,8 @@
             this.Start = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.liner_position = new System.Windows.Forms.TextBox();
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // Clear
@@ -80,7 +82,7 @@
             this.textBox_Send.Location = new System.Drawing.Point(271, 404);
             this.textBox_Send.MaxLength = 21;
             this.textBox_Send.Name = "textBox_Send";
-            this.textBox_Send.Size = new System.Drawing.Size(288, 19);
+            this.textBox_Send.Size = new System.Drawing.Size(288, 25);
             this.textBox_Send.TabIndex = 2;
             this.textBox_Send.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Send_KeyUp);
             // 
@@ -101,7 +103,7 @@
             this.comboBox_ComPort.FormattingEnabled = true;
             this.comboBox_ComPort.Location = new System.Drawing.Point(36, 403);
             this.comboBox_ComPort.Name = "comboBox_ComPort";
-            this.comboBox_ComPort.Size = new System.Drawing.Size(115, 20);
+            this.comboBox_ComPort.Size = new System.Drawing.Size(115, 26);
             this.comboBox_ComPort.TabIndex = 4;
             this.comboBox_ComPort.SelectedIndexChanged += new System.EventHandler(this.comboBox_ComPortSelectedIndexChanged);
             this.comboBox_ComPort.Click += new System.EventHandler(this.comboBox_ComPort_Click);
@@ -128,7 +130,7 @@
             this.comboBox_SEEDID.FormattingEnabled = true;
             this.comboBox_SEEDID.Location = new System.Drawing.Point(207, 401);
             this.comboBox_SEEDID.Name = "comboBox_SEEDID";
-            this.comboBox_SEEDID.Size = new System.Drawing.Size(58, 20);
+            this.comboBox_SEEDID.Size = new System.Drawing.Size(58, 26);
             this.comboBox_SEEDID.TabIndex = 5;
             this.comboBox_SEEDID.SelectedIndexChanged += new System.EventHandler(this.comboBox_SEEDID_SelectedIndexChanged);
             // 
@@ -137,7 +139,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(152, 406);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 12);
+            this.label1.Size = new System.Drawing.Size(72, 18);
             this.label1.TabIndex = 6;
             this.label1.Text = "SEED ID";
             // 
@@ -147,7 +149,7 @@
             this.comboBox_Cmd.FormattingEnabled = true;
             this.comboBox_Cmd.Location = new System.Drawing.Point(36, 332);
             this.comboBox_Cmd.Name = "comboBox_Cmd";
-            this.comboBox_Cmd.Size = new System.Drawing.Size(115, 20);
+            this.comboBox_Cmd.Size = new System.Drawing.Size(115, 26);
             this.comboBox_Cmd.TabIndex = 7;
             this.comboBox_Cmd.SelectedIndexChanged += new System.EventHandler(this.comboBox_Cmd_SelectedIndexChanged);
             // 
@@ -156,7 +158,7 @@
             this.label_CMD.AutoSize = true;
             this.label_CMD.Location = new System.Drawing.Point(4, 335);
             this.label_CMD.Name = "label_CMD";
-            this.label_CMD.Size = new System.Drawing.Size(30, 12);
+            this.label_CMD.Size = new System.Drawing.Size(45, 18);
             this.label_CMD.TabIndex = 12;
             this.label_CMD.Text = "CMD";
             // 
@@ -165,7 +167,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(151, 336);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 12);
+            this.label2.Size = new System.Drawing.Size(40, 18);
             this.label2.TabIndex = 13;
             this.label2.Text = "arg1";
             // 
@@ -174,7 +176,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(301, 337);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 12);
+            this.label3.Size = new System.Drawing.Size(40, 18);
             this.label3.TabIndex = 14;
             this.label3.Text = "arg2";
             // 
@@ -183,7 +185,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(7, 363);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(27, 12);
+            this.label4.Size = new System.Drawing.Size(40, 18);
             this.label4.TabIndex = 15;
             this.label4.Text = "arg3";
             // 
@@ -192,7 +194,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(152, 363);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(27, 12);
+            this.label5.Size = new System.Drawing.Size(40, 18);
             this.label5.TabIndex = 16;
             this.label5.Text = "arg4";
             // 
@@ -201,7 +203,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(300, 363);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 12);
+            this.label6.Size = new System.Drawing.Size(40, 18);
             this.label6.TabIndex = 18;
             this.label6.Text = "arg5";
             // 
@@ -210,7 +212,7 @@
             this.textBox_Arg1.Enabled = false;
             this.textBox_Arg1.Location = new System.Drawing.Point(184, 333);
             this.textBox_Arg1.Name = "textBox_Arg1";
-            this.textBox_Arg1.Size = new System.Drawing.Size(115, 19);
+            this.textBox_Arg1.Size = new System.Drawing.Size(115, 25);
             this.textBox_Arg1.TabIndex = 19;
             this.textBox_Arg1.TextChanged += new System.EventHandler(this.textBox_Arg1_TextChanged);
             // 
@@ -219,7 +221,7 @@
             this.textBox_Arg3.Enabled = false;
             this.textBox_Arg3.Location = new System.Drawing.Point(36, 360);
             this.textBox_Arg3.Name = "textBox_Arg3";
-            this.textBox_Arg3.Size = new System.Drawing.Size(115, 19);
+            this.textBox_Arg3.Size = new System.Drawing.Size(115, 25);
             this.textBox_Arg3.TabIndex = 21;
             this.textBox_Arg3.TextChanged += new System.EventHandler(this.textBox_Arg3_TextChanged);
             // 
@@ -228,7 +230,7 @@
             this.textBox_Arg4.Enabled = false;
             this.textBox_Arg4.Location = new System.Drawing.Point(184, 360);
             this.textBox_Arg4.Name = "textBox_Arg4";
-            this.textBox_Arg4.Size = new System.Drawing.Size(115, 19);
+            this.textBox_Arg4.Size = new System.Drawing.Size(115, 25);
             this.textBox_Arg4.TabIndex = 22;
             this.textBox_Arg4.TextChanged += new System.EventHandler(this.textBox_Arg4_TextChanged);
             // 
@@ -237,7 +239,7 @@
             this.textBox_Arg5.Enabled = false;
             this.textBox_Arg5.Location = new System.Drawing.Point(329, 360);
             this.textBox_Arg5.Name = "textBox_Arg5";
-            this.textBox_Arg5.Size = new System.Drawing.Size(115, 19);
+            this.textBox_Arg5.Size = new System.Drawing.Size(115, 25);
             this.textBox_Arg5.TabIndex = 23;
             this.textBox_Arg5.TextChanged += new System.EventHandler(this.textBox_Arg5_TextChanged);
             // 
@@ -246,7 +248,7 @@
             this.textBox_Arg2.Enabled = false;
             this.textBox_Arg2.Location = new System.Drawing.Point(329, 332);
             this.textBox_Arg2.Name = "textBox_Arg2";
-            this.textBox_Arg2.Size = new System.Drawing.Size(115, 19);
+            this.textBox_Arg2.Size = new System.Drawing.Size(115, 25);
             this.textBox_Arg2.TabIndex = 24;
             this.textBox_Arg2.TextChanged += new System.EventHandler(this.textBox_Arg2_TextChanged);
             // 
@@ -267,7 +269,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(9, 5);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 12);
+            this.label7.Size = new System.Drawing.Size(46, 18);
             this.label7.TabIndex = 26;
             this.label7.Text = "Send";
             // 
@@ -276,7 +278,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(269, 5);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(31, 12);
+            this.label8.Size = new System.Drawing.Size(46, 18);
             this.label8.TabIndex = 27;
             this.label8.Text = "Recv";
             // 
@@ -285,7 +287,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(4, 406);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(26, 12);
+            this.label9.Size = new System.Drawing.Size(40, 18);
             this.label9.TabIndex = 28;
             this.label9.Text = "Port";
             // 
@@ -348,6 +350,15 @@
             this.liner_position.Name = "liner_position";
             this.liner_position.Size = new System.Drawing.Size(138, 64);
             this.liner_position.TabIndex = 35;
+            // 
+            // timer3
+            // 
+            this.timer3.Interval = 200;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // timer4
+            // 
+            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
             // 
             // Form1
             // 
@@ -426,6 +437,8 @@
         private System.Windows.Forms.Button Start;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox liner_position;
+        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Timer timer4;
     }
 }
 

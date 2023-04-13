@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SeedCmdChecker
 {
-    class houkou
+    class mouse
     {
         private int x = System.Windows.Forms.Cursor.Position.X;
         private int y = System.Windows.Forms.Cursor.Position.X;

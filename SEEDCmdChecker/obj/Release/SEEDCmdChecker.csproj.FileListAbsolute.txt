@@ -7,3 +7,9 @@ C:\Users\robot\work\tools\SEEDCmdChecker\SEEDCmdChecker\obj\Release\SEEDCmdCheck
 C:\Users\robot\work\tools\SEEDCmdChecker\SEEDCmdChecker\obj\Release\SeedCmdChecker.exe
 C:\Users\robot\work\tools\SEEDCmdChecker\SEEDCmdChecker\obj\Release\SeedCmdChecker.pdb
 C:\Users\robot\work\tools\SEEDCmdChecker\SEEDCmdChecker\obj\Release\SEEDCmdChecker.csprojResolveAssemblyReference.cache
+C:\Users\ShapePS\OneDrive - 富山県立大学\デスクトップ\skr制御\SEEDCmdChecker\obj\Release\SeedCmdChecker.Form1.resources
+C:\Users\ShapePS\OneDrive - 富山県立大学\デスクトップ\skr制御\SEEDCmdChecker\obj\Release\SeedCmdChecker.Properties.Resources.resources
+C:\Users\ShapePS\OneDrive - 富山県立大学\デスクトップ\skr制御\SEEDCmdChecker\obj\Release\SEEDCmdChecker.csproj.GenerateResource.cache
+C:\Users\ShapePS\OneDrive - 富山県立大学\デスクトップ\skr制御\SEEDCmdChecker\obj\Release\SEEDCmdChecker.csproj.CoreCompileInputs.cache
+C:\Users\ShapePS\OneDrive - 富山県立大学\デスクトップ\skr制御\SEEDCmdChecker\obj\Release\SeedCmdChecker.exe
+C:\Users\ShapePS\OneDrive - 富山県立大学\デスクトップ\skr制御\SEEDCmdChecker\obj\Release\SeedCmdChecker.pdb
