@@ -9,7 +9,7 @@ namespace SeedCmdChecker
     class mouse
     {
         private int x = System.Windows.Forms.Cursor.Position.X;
-        private int y = System.Windows.Forms.Cursor.Position.X;
+        private int y = System.Windows.Forms.Cursor.Position.Y;
 
         public int X
         {

@@ -30,6 +30,9 @@ namespace SeedCmdChecker
         private List<Control> argsTextBox = new List<Control>();
         private mouse mouse;
         private int pulse;
+        int mouseX;
+        int mouseY;
+   
         #endregion
 
         #region コンストラクタ
@@ -66,9 +69,6 @@ namespace SeedCmdChecker
         /// <param name="e"></param>
         public void serialPort_DataReceive(object o)
         {
-            mouse mouse = new mouse();
-            int mouseX;
-            int mouseY;
             if (serialPort.IsOpen == false ||
                 serialPort.IsOpen == true && serialPort.BytesToRead == 0)
             {
@@ -85,7 +85,7 @@ namespace SeedCmdChecker
                 this.Invoke(delegateMethod, new object[] { o });
                 return;
             }
-
+            mouse mouse = new mouse();
             // シリアルポートからデータ受信
             char[] data = new char[serialPort.BytesToRead];
             serialPort.Read(data, 0, data.GetLength(0));
@@ -98,9 +98,7 @@ namespace SeedCmdChecker
             {
                 timer2.Enabled = false;
                 
-                 mouseX = mouse.X;
-                mouseY = mouse.Y;
-               
+              
             }
             if (str.Contains("t30F52FFF5C02FF"))
             {
