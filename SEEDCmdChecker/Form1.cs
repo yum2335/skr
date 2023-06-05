@@ -32,7 +32,8 @@ namespace SeedCmdChecker
         private int pulse;
         int mouseX;
         int mouseY;
-   
+        double speed;
+        int[] array = new int[0];
         #endregion
 
         #region コンストラクタ
@@ -107,7 +108,8 @@ namespace SeedCmdChecker
 
             }
 
-            //Console.WriteLine(str.Contains("t30F82FFF42"));
+            //Console.WriteLine(str);
+
         }
 
         /// <summary>
@@ -446,20 +448,53 @@ namespace SeedCmdChecker
       
         private void timer2_Tick(object sender, EventArgs e)
         {
+            int b = 10;
       
             位置座標.Text = Control.MousePosition.ToString();
+
+            if (array == null || array.Length == 0)
+            {
+                mouse mouse = new mouse();
+                Array.Resize(ref array, 2);
+
+                array[0] = mouse.X;
+                array[1] = mouse.Y;
+
+                //処理いったん停止
+                Thread.Sleep(20);
+
+            }
+
+            if (array.Length == 2)
+            {
+                mouse mouse = new mouse();
+                Array.Resize(ref array, 4);
+
+                array[2] = mouse.X;
+                array[3] = mouse.Y;
+
+                speed = Math.Sqrt((array[2] - array[0])* (array[2] - array[0])+ (array[3] - array[1]) * (array[3] - array[1]) );
+                //textBox2.Text = Convert.ToString(speedx);
+                
+            }
+
+            if(array.Length == 4)
+            {
+                Array.Resize(ref array, 0);
+            }
+
 #if DEBUG
-            
+
             try
             {
                 string cmd = this.textBox_Send.Text;
                 
                 mouse = new mouse();
-                //マウスx座標をpulseに変換(40000pulse/1280pixel=31)
-                pulse = mouse.X * 31;
+                //マウスx座標をpulseに変換(114000pulse/1280pixel=89)
+                pulse = mouse.X * 89;
 
                 //seedコマンドの末尾に4桁指定でx座標を入れる
-                textBox_Send.Text = "t3018F10064001100" + pulse.ToString("X4");
+                textBox_Send.Text = "t3028F200640001" + pulse.ToString("X6");
                
                 int zeroFillLen = 12 - textBox_Send.Text.Length; // SEED CMDの長さからテキストのコマンド長さを引く。
                 
@@ -475,22 +510,112 @@ namespace SeedCmdChecker
                 //cmd2 += "\r";
                 serialPort.Write(cmd);
                
-                //Console.WriteLine(mouse.X);
-                //Console.WriteLine(cmd2);
+            }
+            catch
+            {
+                MessageBox.Show("送信に失敗しました。");
+            }
+            try
+            {
+                string cmd = this.textBox_Send.Text;
+
+                mouse = new mouse();
+                //マウスx座標をpulseに変換(88000pulse/800pixel=110)
+                pulse = mouse.Y * 110;
+
+                //seedコマンドの末尾に4桁指定でx座標を入れる
+                textBox_Send.Text = "t3018F100640001" + pulse.ToString("X6");
+
+                int zeroFillLen = 12 - textBox_Send.Text.Length; // SEED CMDの長さからテキストのコマンド長さを引く。
+
+                for (int i = 0; i < zeroFillLen; i++)
+                {
+                    cmd += "0";
+                }
+
+                this.textBox_SendLog.Text += textBox_Send.Text + "\\r" + "\r\n";
+                //this.liner_position.Text += liner_position.Text + "\\r" + "\r\n";
+
+                cmd += "\r";
+                //cmd2 += "\r";
+                serialPort.Write(cmd);
+
             }
             catch
             {
                 MessageBox.Show("送信に失敗しました。");
             }
 
-           
+            try
+            {
+                string cmd = this.textBox_Send.Text;
 
 
+                //seedコマンドの末尾に4桁指定でx座標を入れる
+                textBox_Send.Text = "t3018F100600000000000";
+
+                int zeroFillLen = 12 - textBox_Send.Text.Length; // SEED CMDの長さからテキストのコマンド長さを引く。
+
+                for (int i = 0; i < zeroFillLen; i++)
+                {
+                    cmd += "0";
+                }
+
+                this.textBox_SendLog.Text += textBox_Send.Text + "\\r" + "\r\n";
+                //this.liner_position.Text += liner_position.Text + "\\r" + "\r\n";
+
+                cmd += "\r";
+                //cmd2 += "\r";
+                serialPort.Write(cmd);
+
+            }
+            catch
+            {
+                MessageBox.Show("送信に失敗しました。");
+            }
+
+            Console.WriteLine(speed);
+            //マウス速度が速くなるほど処理を遅くして、モータの受信混乱を防ぐ
+            
+            if (0< speed && speed < 5)
+            {
+                Console.WriteLine("A");
+                Thread.Sleep(500);
+            }
+            else if (5 < speed && speed < 10)
+            {
+                Console.WriteLine("B");
+                Thread.Sleep(540);
+            }
+
+            else if (10 < speed && speed < 15)
+            {
+                Thread.Sleep(580);
+            }
+
+            else if (15 < speed && speed < 20)
+            {
+                Console.WriteLine("C");
+                Thread.Sleep(620);
+            }
+
+            if (20 < speed   )
+            {
+                Console.WriteLine("D");
+                Thread.Sleep(700);
+            }
+
+            else if (speed == 0)
+            {
+                Thread.Sleep(500);
+            }
+
+          
 
         }
-       
+
 #endif
-        
+
 
         private void ID1モータON_Click(object sender, EventArgs e)
         {
@@ -623,63 +748,131 @@ namespace SeedCmdChecker
             int ilen = textBox_RecvLog.Text.Length;
             int ilen2 = textBox_SendLog.Text.Length;
 
-            if (ilen > 20000)
-                this.textBox_RecvLog.Text = this.textBox_RecvLog.Text.Remove(0, 15000);
+            if (ilen > 10000)
+                this.textBox_RecvLog.Text = this.textBox_RecvLog.Text.Remove(0, 9000);
 
-            if (ilen2 > 5000)
-                this.textBox_SendLog.Text = this.textBox_SendLog.Text.Remove(0, 2000);
+            if (ilen2 > 1000)
+                this.textBox_SendLog.Text = this.textBox_SendLog.Text.Remove(0, 1000);
 
             //Console.WriteLine(ilen2.ToString());
             //Console.WriteLine(ilen.ToString());
         }
 
-        private void timer3_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                string cmd = this.textBox_Send.Text;
-
-                textBox_Send.Text = "t3028F200430200000000";
-                //textBox_Send.Text = "t3008F0005D000D000000";
-
-                int zeroFillLen = 12 - textBox_Send.Text.Length; // SEED CMDの長さからテキストのコマンド長さを引く。
-
-                for (int i = 0; i < zeroFillLen; i++)
-                {
-                    cmd += "0";
-                }
-
-                this.textBox_SendLog.Text += textBox_Send.Text + "\\r" + "\r\n";
-                //this.liner_position.Text += liner_position.Text + "\\r" + "\r\n";
-
-                cmd += "\r";
-                serialPort.Write(cmd);
-
-
-            }
-            catch
-            {
-                MessageBox.Show("送信に失敗しました。");
-            }
-
-
-        
-        }
+       
 
         private void timer4_Tick(object sender, EventArgs e)
         {
-             if (mouse.X < 600 && mouse.X > 300 && mouse.Y < 600 && mouse.Y > 300)
+            mouse = new mouse();
+            if (mouse.X < 600 && mouse.X > 300 && mouse.Y < 600 && mouse.Y > 300)
             {
+                mouseX = mouse.X;
+                mouseY = mouse.Y;
+                System.Windows.Forms.Cursor.Position = new System.Drawing.Point(mouse.X,mouse.Y);
+                try
+                {
+                    string cmd = this.textBox_Send.Text;
+                    textBox_Send.Text = "t3038F3005D0301000000";
+                    int zeroFillLen = 12 - textBox_Send.Text.Length; // SEED CMDの長さからテキストのコマンド長さを引く。
+
+                    for (int i = 0; i < zeroFillLen; i++)
+                    {
+                        cmd += "0";
+                    }
+
+                    this.textBox_SendLog.Text += textBox_Send.Text + "\\r" + "\r\n";
+                    //this.liner_position.Text += liner_position.Text + "\\r" + "\r\n";
+
+                    cmd += "\r";
+                    serialPort.Write(cmd);
+                }
+                catch
+                {
+                    MessageBox.Show("送信に失敗しました。");
+                }
+
+                try
+                {
+                    string cmd = this.textBox_Send.Text;
+                    textBox_Send.Text = "t3048F4005D0401000000";
+                    int zeroFillLen = 12 - textBox_Send.Text.Length; // SEED CMDの長さからテキストのコマンド長さを引く。
+
+                    for (int i = 0; i < zeroFillLen; i++)
+                    {
+                        cmd += "0";
+                    }
+
+                    this.textBox_SendLog.Text += textBox_Send.Text + "\\r" + "\r\n";
+                    //this.liner_position.Text += liner_position.Text + "\\r" + "\r\n";
+
+                    cmd += "\r";
+                    serialPort.Write(cmd);
+                }
+                catch
+                {
+                    MessageBox.Show("送信に失敗しました。");
+                }
+
+                try
+                {
+                    string cmd = this.textBox_Send.Text;
+                    textBox_Send.Text = "t3058F5005D0501000000";
+                    int zeroFillLen = 12 - textBox_Send.Text.Length; // SEED CMDの長さからテキストのコマンド長さを引く。
+
+                    for (int i = 0; i < zeroFillLen; i++)
+                    {
+                        cmd += "0";
+                    }
+
+                    this.textBox_SendLog.Text += textBox_Send.Text + "\\r" + "\r\n";
+                    //this.liner_position.Text += liner_position.Text + "\\r" + "\r\n";
+
+                    cmd += "\r";
+                    serialPort.Write(cmd);
+                }
+                catch
+                {
+                    MessageBox.Show("送信に失敗しました。");
+                }
+
+                try
+                {
+                    string cmd = this.textBox_Send.Text;
+                    textBox_Send.Text = "t3068F6005D0601000000";
+                    int zeroFillLen = 12 - textBox_Send.Text.Length; // SEED CMDの長さからテキストのコマンド長さを引く。
+
+                    for (int i = 0; i < zeroFillLen; i++)
+                    {
+                        cmd += "0";
+                    }
+
+                    this.textBox_SendLog.Text += textBox_Send.Text + "\\r" + "\r\n";
+                    //this.liner_position.Text += liner_position.Text + "\\r" + "\r\n";
+
+                    cmd += "\r";
+                    serialPort.Write(cmd);
+                }
+                catch
+                {
+                    MessageBox.Show("送信に失敗しました。");
+                }
+
+                timer4.Enabled = false;
+                timer3.Enabled = true;
+
+
+            }
+            else
+            {
+                mouseX = mouse.X;
+                mouseY = mouse.Y;
                 try
                 {
                     string cmd = this.textBox_Send.Text;
 
 
-                    mouse = new mouse();
-                 
 
                     //seedコマンドの末尾に4桁指定でx座標を入れる
-                    textBox_Send.Text = "t3028F2005D0201000000";
+                    textBox_Send.Text = "t3038F3005D0309000000";
 
                     int zeroFillLen = 12 - textBox_Send.Text.Length; // SEED CMDの長さからテキストのコマンド長さを引く。
 
@@ -695,26 +888,84 @@ namespace SeedCmdChecker
                     //cmd2 += "\r";
                     serialPort.Write(cmd);
 
+                    //Console.WriteLine(mouse.X);
+                    //Console.WriteLine(cmd2);
                 }
                 catch
                 {
                     MessageBox.Show("送信に失敗しました。");
                 }
 
-          
-            }
-            else
-            {
                 try
                 {
                     string cmd = this.textBox_Send.Text;
 
 
-                    mouse = new mouse();
+
+                    //seedコマンドの末尾に4桁指定でx座標を入れる
+                    textBox_Send.Text = "t3048F4005D0409000000";
+
+                    int zeroFillLen = 12 - textBox_Send.Text.Length; // SEED CMDの長さからテキストのコマンド長さを引く。
+
+                    for (int i = 0; i < zeroFillLen; i++)
+                    {
+                        cmd += "0";
+                    }
+
+                    this.textBox_SendLog.Text += textBox_Send.Text + "\\r" + "\r\n";
+                    //this.liner_position.Text += liner_position.Text + "\\r" + "\r\n";
+
+                    cmd += "\r";
+                    //cmd2 += "\r";
+                    serialPort.Write(cmd);
+
+                    //Console.WriteLine(mouse.X);
+                    //Console.WriteLine(cmd2);
+                }
+                catch
+                {
+                    MessageBox.Show("送信に失敗しました。");
+                }
+
+                try
+                {
+                    string cmd = this.textBox_Send.Text;
+
 
 
                     //seedコマンドの末尾に4桁指定でx座標を入れる
-                    textBox_Send.Text = "t3028F2005D0209000000";
+                    textBox_Send.Text = "t3058F5005D0509000000";
+
+                    int zeroFillLen = 12 - textBox_Send.Text.Length; // SEED CMDの長さからテキストのコマンド長さを引く。
+
+                    for (int i = 0; i < zeroFillLen; i++)
+                    {
+                        cmd += "0";
+                    }
+
+                    this.textBox_SendLog.Text += textBox_Send.Text + "\\r" + "\r\n";
+                    //this.liner_position.Text += liner_position.Text + "\\r" + "\r\n";
+
+                    cmd += "\r";
+                    //cmd2 += "\r";
+                    serialPort.Write(cmd);
+
+                    //Console.WriteLine(mouse.X);
+                    //Console.WriteLine(cmd2);
+                }
+                catch
+                {
+                    MessageBox.Show("送信に失敗しました。");
+                }
+
+                try
+                {
+                    string cmd = this.textBox_Send.Text;
+
+
+
+                    //seedコマンドの末尾に4桁指定でx座標を入れる
+                    textBox_Send.Text = "t3068F6005D0609000000";
 
                     int zeroFillLen = 12 - textBox_Send.Text.Length; // SEED CMDの長さからテキストのコマンド長さを引く。
 
@@ -739,6 +990,17 @@ namespace SeedCmdChecker
                 }
             }
             
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            mouse mouse = new mouse();
+            System.Windows.Forms.Cursor.Position = new System.Drawing.Point(mouseX, mouseY);
+            if (mouse.X >= 600 - 5 || mouse.X <= 300 + 5 || mouse.Y >= 600 - 5 || mouse.Y <= 300 + 5)
+            {
+                timer4.Enabled = true;
+                timer3.Enabled = false;
+            }
         }
     }
 }
